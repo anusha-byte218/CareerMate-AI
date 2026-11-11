@@ -74,3 +74,119 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 500);
     });
 });
+// Aptitude Quiz
+
+const quizQuestions = [
+    {
+        question: "What is 20% of 150?",
+        options: ["20", "25", "30", "35"],
+        answer: "30"
+    },
+    {
+        question: "Find the next number: 2, 4, 8, 16, ?",
+        options: ["20", "24", "32", "36"],
+        answer: "32"
+    },
+    {
+        question: "If 5 pens cost ₹50, what is the cost of 1 pen?",
+        options: ["₹5", "₹10", "₹15", "₹20"],
+        answer: "₹10"
+    },
+    {
+        question: "Which is the odd one out?",
+        options: ["Apple", "Mango", "Carrot", "Banana"],
+        answer: "Carrot"
+    },
+    {
+        question: "What is 12 × 8?",
+        options: ["86", "92", "96", "108"],
+        answer: "96"
+    }
+];
+
+let currentQuestion = 0;
+let score = 0;
+let selected = false;
+
+function loadQuestion() {
+    const question = quizQuestions[currentQuestion];
+
+    document.getElementById("question").textContent =
+        question.question;
+
+    const optionsDiv = document.getElementById("options");
+    optionsDiv.innerHTML = "";
+
+    question.options.forEach(option => {
+        const button = document.createElement("button");
+
+        button.textContent = option;
+
+        button.onclick = function () {
+            if (selected) return;
+
+            selected = true;
+
+            if (option === question.answer) {
+                score++;
+                button.style.background = "#a7f3d0";
+            } else {
+                button.style.background = "#fecaca";
+            }
+
+            document.querySelectorAll("#options button")
+                .forEach(btn => btn.disabled = true);
+        };
+
+        optionsDiv.appendChild(button);
+    });
+}
+
+function nextQuestion() {
+    if (!selected) {
+        alert("Please select an answer!");
+        return;
+    }
+
+    currentQuestion++;
+    selected = false;
+
+    if (currentQuestion < quizQuestions.length) {
+        loadQuestion();
+    } else {
+        showResult();
+    }
+}
+
+function showResult() {
+    document.getElementById("question").textContent =
+        "Quiz Completed!";
+
+    document.getElementById("options").innerHTML = "";
+
+    document.getElementById("nextBtn").style.display = "none";
+
+    const percentage = Math.round(
+        (score / quizQuestions.length) * 100
+    );
+
+    document.getElementById("result").textContent =
+        `Your Score: ${score}/${quizQuestions.length} (${percentage}%)`;
+
+    document.getElementById("restartBtn").style.display = "inline-block";
+}
+
+function restartQuiz() {
+    currentQuestion = 0;
+    score = 0;
+    selected = false;
+
+    document.getElementById("result").textContent = "";
+    document.getElementById("nextBtn").style.display = "inline-block";
+    document.getElementById("restartBtn").style.display = "none";
+
+    loadQuestion();
+}
+
+// Start quiz
+document.addEventListener("DOMContentLoaded", loadQuestion);
