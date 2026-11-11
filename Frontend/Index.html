@@ -3,32 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CareerMate AI</title>
+
+    <title>CareerMate-AI | Placement Assistant</title>
+
     <link rel="stylesheet" href="Style.css">
 </head>
+
 <body>
+
     <header>
-        <h1>CareerMate AI</h1>
-        <p>Your AI-powered placement preparation assistant</p>
+        <h1>CareerMate-AI</h1>
+        <p>Your AI-Powered Placement Preparation Assistant</p>
     </header>
 
     <main>
-        <section>
-            <h2>Welcome to CareerMate AI</h2>
-            <p>Prepare for your placements with confidence.</p>
+        <section class="welcome">
+            <h2>Welcome to CareerMate-AI!</h2>
+            <p>
+                Prepare for your dream job with personalized
+                placement guidance and interview practice.
+            </p>
+        </section>
 
-            <label for="topic">Choose a topic:</label>
-            <select id="topic">
-                <option>Problem Solving</option>
-                <option>Technical Interview</option>
-                <option>HR Interview</option>
-                <option>Communication Skills</option>
-            </select>
+        <section class="features">
+            <h2>What can I help you with?</h2>
 
-            <button onclick="alert('Your preparation journey starts now!')">
-                Start Preparation
-            </button>
+            <div class="feature-container">
+                <div class="feature-card">
+                    <h3>Resume Building</h3>
+                    <p>Improve your resume and highlight your skills.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Interview Preparation</h3>
+                    <p>Practice common technical and HR questions.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Aptitude Practice</h3>
+                    <p>Improve your reasoning and problem-solving skills.</p>
+                </div>
+
+                <div class="feature-card">
+                    <h3>Coding Preparation</h3>
+                    <p>Learn programming concepts and coding basics.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="chat-section">
+            <h2>Chat with CareerMate-AI</h2>
+
+            <div id="chatMessages" class="chat-messages">
+                <div class="bot-message">
+                    Hello! Welcome to CareerMate-AI.
+                    Ask me about resumes, interviews,
+                    aptitude or placements.
+                </div>
+            </div>
+
+            <form id="chatForm">
+                <input
+                    type="text"
+                    id="userInput"
+                    placeholder="Ask your career-related question..."
+                    autocomplete="off"
+                    required
+                >
+
+                <button type="submit">Send</button>
+            </form>
         </section>
     </main>
+
+    <footer>
+        <p>© 2026 CareerMate-AI | Your Career, Our Priority</p>
+    </footer>
+
+    <!-- Connect JavaScript -->
+    <script src="script.js"></script>
+
 </body>
 </html>
